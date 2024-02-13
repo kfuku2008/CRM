@@ -1,0 +1,139 @@
+{% extends "base.html" %} {% block content %}
+
+<p>【①購入情報登録】</p>
+
+<form action="/add_purchase" method="post">
+  <div class="row mb-3">
+    <label for="input-customer-name" class="col-sm-2 col-form-label"
+      >顧客名</label
+    >
+    <div class="col-sm-10">
+      <select
+        type="text"
+        class="form-control"
+        id="input-customer-name"
+        name="input-customer-name"
+      >
+      {% for customer in customers %} 
+      <option value = "{{customer.customer_name}}">
+        {{customer.customer_name}}
+      </option>
+      {% endfor %}
+      </select>
+    </div>
+  </div>
+  <br/>
+
+  <!--購入商品１-->
+  <div class="row mb-3">
+    <label for="input-item-name1" class="col-sm-2 col-form-label"
+      >購入商品１</label
+    >
+    <div class="col-sm-10">
+      <select
+        type="text"
+        class="form-control"
+        id="input-item-name1"
+        name="input-item-name1"
+      >
+      {% for item in items %}
+      <option value="{{item.item_name}}">
+        {{item.item_name}}
+      </option>
+      {% endfor %}   
+    </select>
+    </div>
+  </div>
+
+
+  <div class="row mb-3">
+    <label for="input-quantity1" class="col-sm-2 col-form-label">数量1</label>
+    <div class="col-sm-10">
+      <input
+        type="number"
+        class="form-control"
+        id="input-quantity1"
+        name="input-quantity1"
+      />
+    </div>
+  </div>
+
+  <!--購入商品2-->
+  <div class="row mb-3">
+    <label for="input-item-name2" class="col-sm-2 col-form-label"
+      >購入商品2</label
+    >
+    <div class="col-sm-10">
+      <select
+        type="text"
+        class="form-control"
+        id="input-item-name2"
+        name="input-item-name2"
+      >
+      <option value=""></option>
+      {% for item in items %}
+      <option value="{{item.item_name}}">
+        {{item.item_name}}
+      </option>
+      {% endfor %}   
+    </select>
+    </div>
+  </div>
+
+
+  <div class="row mb-3">
+    <label for="input-quantity2" class="col-sm-2 col-form-label">数量2</label>
+    <div class="col-sm-10">
+      <input
+        type="number"
+        class="form-control"
+        id="input-quantity2"
+        name="input-quantity2"
+      />
+    </div>
+  </div>
+
+  <!--購入日-->
+  <div class="row mb-3">
+    <label for="input-date" class="col-sm-2 col-form-label">購入日</label>
+    <div class="col-sm-10">
+      <input
+        type="date"
+        class="form-control"
+        id="input-date"
+        name="input-date"
+        value="2024-01-01"
+      />
+    </div>
+  </div>
+ 
+  <button type="submit" class="btn btn-primary" formmethod="post">購入情報登録</button>
+</form>
+
+<br />
+<br />
+
+<p>【③購入情報の削除】</p>
+
+<form action="/delete_purchase" method="post">
+  <div class="row mb-3">
+    <label for="input-purchase-id" class="col-sm-2 col-form-label">削除する購入ID</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        id="input-purchase-id"
+        name="input-purchase-id"
+      />
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" formmethod="post">
+    購入情報削除
+  </button>
+</form>
+
+<br />
+<br />
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block content %}
+
+<p>【統計データ表示】</p>
+  <p>{{statistics_type}}</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">順位</th>
+      <th scope="col">商品ID</th>
+      <th scope="col">商品名</th>
+      <th scope="col">商品ID</th>
+      <th scope="col">総数量</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in items%}
+    <tr>
+      <th scope="row">{{item[3]}}</th>
+      <td>{{item[0]}}</td>
+      <td>{{item[2]}}</td>
+      <td>{{item[1]}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

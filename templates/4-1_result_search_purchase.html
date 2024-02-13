@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block content %}
+
+<p>【検索結果】</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">購入ID</th>
+      <th scope="col">顧客ID</th>
+      <th scope="col">顧客名</th>
+      <th scope="col">商品ID</th>
+      <th scope="col">商品名</th>
+      <th scope="col">数量</th>
+      <th scope="col">日付</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for purchase_detail in purchase_details%}
+    <tr>
+      <th scope="row">{{purchase_detail.purchase_id}}</th>
+      <td>{{purchase_detail.purchases.customer_id}}</td>
+      <td>{{purchase_detail.purchases.customers.customer_name}}</td>
+      <td>{{purchase_detail.item_id}}</td>
+      <td>{{purchase_detail.items.item_name}}</td>
+      <td>{{purchase_detail.quantity}}</td>
+      <td>{{purchase_detail.purchases.date}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
